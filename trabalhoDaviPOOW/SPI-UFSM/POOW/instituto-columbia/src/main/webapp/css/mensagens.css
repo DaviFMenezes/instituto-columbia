@@ -1,0 +1,180 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+    color: #1f2937;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.msg {
+    width: 80%;
+    margin: 20px auto;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #e0e7ff;
+    color: #1e3a8a;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    text-align: center;
+    border-left: 5px solid #1e3a8a;
+}
+
+
+.container {
+    width: 85%;
+    max-width: 1000px; /* Define um limite para o card não esticar demais em telas grandes */
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    flex: 1;
+}
+
+/* Você pode apagar ou deixar o @media vazio, pois o Flexbox se adapta sozinho */
+@media (max-width: 900px) {
+    .container {
+        width: 95%; /* Dá mais espaço para a tabela em telas de celular */
+    }
+}
+
+
+.card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #1e3a8a;
+}
+
+/* formulário */
+form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #374151;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.2s;
+    background: #fafafa;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    border-color: #1e3a8a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(30,58,138,0.15);
+}
+
+
+form button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #1e3a8a;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+form button:hover {
+    background: #152c6b;
+    transform: translateY(-1px);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+    padding: 12px;
+}
+
+table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    background: white;
+}
+
+table tr:hover td {
+    background: #f3f4f6;
+}
+
+
+td a {
+    margin: 0 6px;
+    font-size: 14px;
+    color: #1e3a8a;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+td a:hover {
+    color: #0f172a;
+    text-decoration: underline;
+}
+
+.container-voltar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-dashboard {
+
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 14px 0;
+
+
+    background-color: #143A8C;
+    color: #FFFFFF;
+    border-radius: 8px;
+
+
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+
+    box-sizing: border-box;
+    transition: background 0.2s;
+}
+
+
+.btn-dashboard:hover {
+    background-color: #0f2c6b;
+}

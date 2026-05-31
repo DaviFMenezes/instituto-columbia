@@ -1,0 +1,257 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+}
+
+.msg {
+    width: 85%;
+    margin: 20px auto;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: #e0e7ff;
+    color: #1e3a8a;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.container-projetos {
+    width: 90%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 30px;
+}
+
+.feed-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.feed-header p {
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+}
+
+.project-top h2 {
+    margin: 5px 0;
+    font-size: 1.4rem;
+    color: #111827;
+}
+
+.project-number {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.project-category {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.project-description {
+    margin-top: 20px;
+    line-height: 1.9;
+    color: #4b5563;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.project-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eceff3;
+}
+
+.info-item {
+    font-size: 0.92rem;
+    color: #374151;
+}
+
+
+.project-image {
+    margin-top: 18px;
+    color: #374151;
+    word-break: break-all;
+}
+
+.project-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.project-actions a {
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-edit {
+    background: #1e3a8a;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #152c6b;
+}
+
+.btn-delete {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.btn-delete:hover {
+    background: #fecaca;
+}
+
+.project-form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    position: sticky;
+    top: 20px;
+}
+
+.project-form-card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #111827;
+}
+
+.project-form-card label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 18px;
+    font-weight: 600;
+}
+
+.project-form-card input, .project-form-card textarea, .project-form-card select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid #dbe1ea;
+    background: #fafbfd;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.project-form-card textarea {
+    resize: vertical;
+}
+
+.project-form-card input:focus, .project-form-card textarea:focus, .project-form-card select:focus {
+    outline: none;
+    border-color: #4338ca;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(67,56,202,0.10);
+}
+
+.project-form-card button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #1e3a8a;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.project-form-card button:hover {
+    background: #152c6b;
+    transform: translateY(-1px);
+}
+
+.container-voltar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-dashboard {
+
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 14px 0;
+    background-color: #143A8C;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: background 0.2s;
+}
+
+.btn-dashboard:hover {
+    background-color: #0f2c6b;
+}
+
+@media (max-width: 1000px) {
+
+    .container-projetos {
+        grid-template-columns: 1fr;
+    }
+
+    .project-form-card {
+        position: static;
+    }
+
+    .project-top {
+        flex-direction: column;
+    }
+
+    .project-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}

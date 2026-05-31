@@ -1,0 +1,29 @@
+.header {
+    background: #ffffff;
+    padding: 0 40px;
+    color: #1a365d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.logo {
+    width: 220px; /* Largura maior para acomodar a logo com texto lateral */
+    height: 90px;  /* Ocupa a altura total do header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Corta o excesso invisível da imagem */
+    margin-left: -30px; /* Remove o recuo da borda transparente da imagem */
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(2.2); /* Amplia o desenho tirando o espaço em branco */
+}

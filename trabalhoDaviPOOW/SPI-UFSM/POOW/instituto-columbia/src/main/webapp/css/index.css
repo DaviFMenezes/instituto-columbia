@@ -1,0 +1,84 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+    color: #1f2937;
+}
+
+/* Container central */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card principal */
+.box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    width: 340px;
+    border-top: 5px solid #1e3a8a; /* azul institucional */
+}
+
+/* Título */
+.box h2 {
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+    background: #fafafa;
+}
+
+input:focus {
+    border-color: #1e3a8a;
+    background: #fff;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: #152c6b;
+    transform: translateY(-1px);
+}
+
+/* Links */
+a {
+    display: block;
+    margin-top: 15px;
+    color: #1e3a8a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
