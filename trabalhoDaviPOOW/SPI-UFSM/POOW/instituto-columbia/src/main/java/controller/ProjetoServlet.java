@@ -19,11 +19,9 @@ public class ProjetoServlet extends HttpServlet {
 
     private boolean podeAlterarProjeto(Usuario usuario, Projeto projeto) {
 
-        boolean ehDono =
-                projeto.getId_usuario() == usuario.getId();
+        boolean ehDono = projeto.getId_usuario() == usuario.getId();
 
-        boolean ehAdmin =
-                "ADMIN".equals(usuario.getPermissao());
+        boolean ehAdmin = "ADMIN".equals(usuario.getPermissao());
 
         return ehDono || ehAdmin;
     }
@@ -81,7 +79,6 @@ public class ProjetoServlet extends HttpServlet {
             return;
         }
 
-
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuario");
         Integer idUsuario = usuarioLogado.getId();
 
@@ -92,12 +89,10 @@ public class ProjetoServlet extends HttpServlet {
         String imagemUrl = req.getParameter("imagemUrl");
 
         LocalDate dataInicio = LocalDate.parse(req.getParameter("dataInicio"));
-
         LocalDate dataTermino = null;
         if (req.getParameter("dataTermino") != null && !req.getParameter("dataTermino").isEmpty()) {
             dataTermino = LocalDate.parse(req.getParameter("dataTermino"));
         }
-
 
         Projeto p = new Projeto(titulo, descricao, categoria, imagemUrl, dataInicio, dataTermino, idUsuario);
 

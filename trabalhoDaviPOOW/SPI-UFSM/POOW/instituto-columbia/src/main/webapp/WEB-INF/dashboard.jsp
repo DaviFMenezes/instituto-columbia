@@ -55,14 +55,6 @@
 
         </div>
 
-
-        <div class="info-box">
-            <p>
-                Sistema interno do Instituto Columbia.
-                Acesso restrito a usuários autorizados.
-            </p>
-        </div>
-
     </div>
 
     <jsp:include page="/WEB-INF/includes/footer.jsp" />

@@ -92,27 +92,6 @@ public class ProjetoDAO {
         return null;
     }
 
-    public List<Projeto> buscarPorCategoria(String categoria) {
-        String sql = "SELECT * FROM projetos WHERE categoria = ?";
-        List<Projeto> lista = new ArrayList<>();
-
-        try (Connection conn = ConexaoDB.getConexao();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, categoria);
-            try(ResultSet rs = stmt.executeQuery()){
-                while(rs.next()){
-                    lista.add(map(rs));
-                }
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar projeto", e);
-        }
-
-        return lista;
-    }
-
     public void atualizar(Projeto p) {
         String sql = "UPDATE projetos SET titulo=?, descricao=?, categoria=?, imagem_url=?, data_inicio=?, data_termino=? WHERE id=?";
 
@@ -152,14 +131,14 @@ public class ProjetoDAO {
         }
     }
 
-    public List<Projeto> buscarPorUsuario(int idUsuario) {
+    public List<Projeto> buscarPorCategoria(String categoria) {
         String sql = "SELECT * FROM projetos WHERE categoria = ?";
         List<Projeto> lista = new ArrayList<>();
 
         try (Connection conn = ConexaoDB.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, idUsuario);
+            stmt.setString(1, categoria);
             try(ResultSet rs = stmt.executeQuery()){
                 while(rs.next()){
                     lista.add(map(rs));
@@ -172,4 +151,5 @@ public class ProjetoDAO {
 
         return lista;
     }
+
 }

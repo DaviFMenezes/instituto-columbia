@@ -4,6 +4,7 @@
 
 <html>
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<c:url value='/css/projetos.css?v=3'/>">
   <link rel="stylesheet" type="text/css" href="<c:url value='/css/footer.css'/>">
 </head>
@@ -46,7 +47,7 @@
 
             <div>
                             <span class="project-number">
-                                #${status.index + 1}
+                              #${status.index + 1}
                             </span>
 
               <h2>${p.titulo}</h2>
@@ -95,14 +96,9 @@
 
             <div class="project-actions">
 
-              <a href="projeto?acao=editar&id=${p.id}"
-                 class="btn-edit">
-                Editar
-              </a>
+              <a href="projeto?acao=editar&id=${p.id}" class="btn-edit">Editar</a>
 
-              <a href="projeto?acao=excluir&id=${p.id}"
-                 class="btn-delete"
-                 onclick="return confirm('Excluir?')">
+              <a href="projeto?acao=excluir&id=${p.id}" class="btn-delete" onclick="return confirm('Excluir?')">
                 Excluir
               </a>
 
@@ -127,52 +123,34 @@
 
         <form action="projeto" method="post">
 
-          <input type="hidden"
-                 name="id"
-                 value="${projeto.id}">
-
+          <input type="hidden" class="form-control" name="id" value="${projeto.id}">
           <label>Título</label>
-          <input type="text"
-                 name="titulo"
-                 value="${projeto.titulo}">
 
+          <input type="text" class="form-control" name="titulo" value="${projeto.titulo}">
           <label>Descrição</label>
-          <textarea name="descricao"
-                    rows="6">${projeto.descricao}</textarea>
 
+          <textarea class="form-control" name="descricao" rows="6">${projeto.descricao}</textarea>
           <label>Categoria</label>
 
-          <select name="categoria">
-
-            <option value="Cultura"
-            ${projeto != null && projeto.categoria == 'Cultura' ? 'selected' : ''}>
+          <select class="form-control" name="categoria">
+            <option value="Cultura"${projeto != null && projeto.categoria == 'Cultura' ? 'selected' : ''}>
               Cultura
             </option>
 
-            <option value="Esporte"
-            ${projeto != null && projeto.categoria == 'Esporte' ? 'selected' : ''}>
+            <option value="Esporte"${projeto != null && projeto.categoria == 'Esporte' ? 'selected' : ''}>
               Esporte
             </option>
 
           </select>
-
           <label>Imagem URL</label>
 
-          <input type="text"
-                 name="imagemUrl"
-                 value="${projeto.imagemUrl}">
-
+          <input type="text" class="form-control" name="imagemUrl" value="${projeto.imagemUrl}">
           <label>Data de Início</label>
 
-          <input type="date"
-                 name="dataInicio"
-                 value="${projeto.dataInicio}">
-
+          <input type="date" class="form-control" name="dataInicio" value="${projeto.dataInicio}">
           <label>Data de Término</label>
 
-          <input type="date"
-                 name="dataTermino"
-                 value="${projeto.dataTermino}">
+          <input type="date" class="form-control" name="dataTermino" value="${projeto.dataTermino}">
 
           <button type="submit">
             ${projeto.id != null ? 'Atualizar' : 'Cadastrar'}

@@ -27,7 +27,5 @@ public class ProjetoService {
         return new ProjetoDAO().buscarPorId(id);
     }
 
-    public List<Projeto> buscarPorUsuario(int idUsuario) {
-        return new ProjetoDAO().buscarPorUsuario(idUsuario);
-    }
+    public List<Projeto> buscarPorCategoria(String categoria) { return new ProjetoDAO().buscarPorCategoria(categoria);}
 }

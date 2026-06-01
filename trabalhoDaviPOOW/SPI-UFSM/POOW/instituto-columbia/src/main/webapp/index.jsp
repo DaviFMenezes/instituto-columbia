@@ -4,13 +4,11 @@
 
 <html>
 <head>
-    <link rel="stylesheet"
-          type="text/css"
-          href="${pageContext.request.contextPath}/css/footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet"
-          type="text/css"
-          href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
+
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css">
 
     <title>Instituto Columbia</title>
 </head>
@@ -26,12 +24,9 @@
         <h2>Instituto Columbia</h2>
 
 
-        <a class="login-link"
-           href="${pageContext.request.contextPath}/login">
+        <a class="login-link" href="${pageContext.request.contextPath}/login">
 
-            <button type="button">
-                Fazer Login
-            </button>
+            <button type="button">Fazer Login</button>
 
         </a>
 
@@ -42,41 +37,23 @@
 
         <form action="mensagem" method="post">
 
-            <input type="text"
-                   name="nome"
-                   placeholder="Seu nome"
-                   required>
+            <input type="text" name="nome" class="form-control" placeholder="Seu nome" required>
 
-            <input type="email"
-                   name="email"
-                   placeholder="Seu e-mail"
-                   required>
+            <input type="email" name="email" class="form-control" placeholder="Seu e-mail" required>
 
-            <input type="text"
-                   name="assunto"
-                   placeholder="Assunto"
-                   required>
+            <input type="text" name="assunto" class="form-control" placeholder="Assunto" required>
 
-            <textarea name="mensagem"
-                      placeholder="Digite sua mensagem"
-                      required></textarea>
+            <textarea name="mensagem" class="form-control" placeholder="Digite sua mensagem" required></textarea>
 
-            <button type="submit">
-                Enviar Mensagem
-            </button>
+            <button type="submit">Enviar Mensagem</button>
 
         </form>
 
         <c:if test="${not empty sucesso}">
-            <p style="color:green">
-                    ${sucesso}
-            </p>
+            <p style="color:green">${sucesso}</p>
         </c:if>
 
-        <c:if test="${not empty erro}">
-            <p style="color:red">
-                    ${erro}
-            </p>
+        <c:if test="${not empty erro}"><p style="color:red">${erro}</p>
         </c:if>
 
     </div>

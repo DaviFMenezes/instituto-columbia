@@ -3,6 +3,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
   <title>Login</title>
@@ -13,8 +14,8 @@
   <div class="box">
     <h2>Login</h2>
     <form action="login" method="post">
-      <input type="email" name="email" placeholder="E-mail" required>
-      <input type="password" name="senha" placeholder="Senha" required>
+      <input class="form-control" type="email"  name="email" placeholder="E-mail" required>
+      <input class="form-control" type="password" name="senha" placeholder="Senha" required>
       <button type="submit">Entrar</button>
     </form>
 

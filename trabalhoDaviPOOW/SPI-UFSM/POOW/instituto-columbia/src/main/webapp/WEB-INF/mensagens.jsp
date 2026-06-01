@@ -3,6 +3,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
+
     <link rel="stylesheet" type="text/css" href="<c:url value='/css/mensagens.css?v=1'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/css/footer.css'/>">
 </head>

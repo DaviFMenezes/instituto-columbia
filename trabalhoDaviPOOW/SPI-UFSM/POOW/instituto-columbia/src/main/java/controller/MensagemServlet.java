@@ -28,7 +28,6 @@ public class MensagemServlet extends HttpServlet {
         String assunto = req.getParameter("assunto");
         String mensagemTexto = req.getParameter("mensagem");
 
-        System.out.println("Recebendo formulário...");
 
         if (nome == null || nome.isEmpty() ||
                 email == null || email.isEmpty() ||
@@ -47,7 +46,6 @@ public class MensagemServlet extends HttpServlet {
             if (idStr != null && !idStr.isEmpty()) {
                 m.setId(Integer.parseInt(idStr));
 
-                System.out.println("Tentando atualizar mensagem...");
                 boolean atualizou = service.atualizar(m);
 
                 if (atualizou) {
@@ -59,7 +57,6 @@ public class MensagemServlet extends HttpServlet {
             }
 
             else {
-                System.out.println("Tentando salvar nova mensagem...");
                 boolean inseriu = service.inserir(m);
 
                 if (inseriu) {
