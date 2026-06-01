@@ -11,31 +11,49 @@ import service.LoginService;
 
 import java.io.IOException;
 
-        @WebServlet("/login")
-        public class LoginServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 
-            private LoginService service = new LoginService();
+    private LoginService service = new LoginService();
 
-            @Override
-            protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                String email = req.getParameter("email");
-                String senha = req.getParameter("senha");
+    @Override
+    protected void doGet(HttpServletRequest req,
+                         HttpServletResponse resp)
+            throws ServletException, IOException {
 
-                Usuario usuario = service.autenticar(email, senha);
+        req.getRequestDispatcher("/WEB-INF/login.jsp")
+                .forward(req, resp);
+    }
 
-                if (usuario != null) {
-                    HttpSession session = req.getSession();
-                    session.setAttribute("usuario", usuario);
+    @Override
+    protected void doPost(HttpServletRequest req,
+                          HttpServletResponse resp)
+            throws ServletException, IOException {
 
-                    if ("ADMIN".equals(usuario.getPermissao())) {
-                        resp.sendRedirect("dashboard");
-                    } else {
-                        resp.sendRedirect("projeto");
-                    }
+        String email = req.getParameter("email");
+        String senha = req.getParameter("senha");
 
-                } else {
-                    req.setAttribute("erro", "Usuário ou senha inválidos");
-                    req.getRequestDispatcher("index.jsp").forward(req, resp);
-                }
+        Usuario usuario = service.autenticar(email, senha);
+
+        if (usuario != null) {
+
+            HttpSession session = req.getSession();
+
+            session.setAttribute("usuario", usuario);
+
+            if ("ADMIN".equals(usuario.getPermissao())) {
+                resp.sendRedirect("dashboard");
+            } else {
+                resp.sendRedirect("projeto");
             }
+
+        } else {
+
+            req.setAttribute("erro",
+                    "Usuário ou senha inválidos");
+
+            req.getRequestDispatcher("/WEB-INF/login.jsp")
+                    .forward(req, resp);
         }
+    }
+}

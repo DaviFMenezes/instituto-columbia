@@ -21,4 +21,7 @@ public class MensagemService {
     public Mensagem buscarPorId(int id) {
         return new MensagemDAO().buscarPorId(id);
     }
+
+    public boolean atualizar(Mensagem p) {return new MensagemDAO().atualizar(p);}
+
 }

@@ -26,17 +26,24 @@ public class MensagemDAO {
         try (Connection conn = ConexaoDB.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+            System.out.println("Conectado no banco!");
+
             stmt.setString(1, m.getNome());
             stmt.setString(2, m.getEmail());
             stmt.setString(3, m.getAssunto());
             stmt.setString(4, m.getMensagem());
 
-            return stmt.executeUpdate() > 0;
+            int linhas = stmt.executeUpdate();
+            System.out.println("Linhas afetadas: " + linhas);
+
+            return linhas > 0;
 
         } catch (SQLException e) {
+            e.printStackTrace();
+
 
             throw new RuntimeException(
-                    "Erro ao inserir mensagem", e
+                    "Erro ao inserir mensagem: "+ e.getMessage(), e
             );
         }
     }
@@ -107,4 +114,22 @@ public class MensagemDAO {
             );
         }
     }
+
+    public boolean atualizar(Mensagem m) {
+        String sql = "UPDATE mensagens SET nome = ?, email = ?, assunto = ?, mensagem = ? WHERE id = ?";
+        try (Connection conn = ConexaoDB.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, m.getNome());
+            stmt.setString(2, m.getEmail());
+            stmt.setString(3, m.getAssunto());
+            stmt.setString(4, m.getMensagem());
+            stmt.setInt(5, m.getId());
+
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao atualizar mensagem: " + e.getMessage(), e);
+        }
+    }
+
 }

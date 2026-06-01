@@ -56,7 +56,6 @@ html, body {
     margin-top: 0;
     color: #1e3a8a;
 }
-
 /* formulário */
 form label {
     display: block;
@@ -65,7 +64,8 @@ form label {
     color: #374151;
 }
 
-form input {
+/* Adicionado form textarea para herdar os mesmos estilos do input */
+form input, form textarea {
     width: 100%;
     padding: 12px;
     margin-top: 6px;
@@ -75,6 +75,20 @@ form input {
     transition: 0.2s;
     background: #fafafa;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Garante a mesma fonte no textarea */
+}
+
+/* Configuração exclusiva para o textarea não quebrar o layout */
+form textarea {
+    height: 100px;
+    resize: vertical; /* Permite ao usuário esticar apenas para baixo */
+}
+
+/* Adicionado :focus para o textarea também */
+form input:focus, form textarea:focus {
+    border-color: #1e3a8a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(30,58,138,0.15);
 }
 
 form input:focus {

@@ -1,29 +1,26 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/css/header.css'/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/css/cadastro.css?v=1'/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/css/footer.css'/>">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <title>Login</title>
 </head>
 <body>
-
 <jsp:include page="/WEB-INF/includes/header.jsp" />
-
-<div class="page-center">
+<div class="container">
     <div class="box">
-        <h2>👤 Criar Conta</h2>
-        <form action="${pageContext.request.contextPath}/usuario" method="post">
-            <input type="text" name="nome" placeholder="Nome" required>
+        <h2>Login</h2>
+        <form action="login" method="post">
             <input type="email" name="email" placeholder="E-mail" required>
             <input type="password" name="senha" placeholder="Senha" required>
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Entrar</button>
         </form>
-        <a href="${pageContext.request.contextPath}/index.jsp" class="btn-back">Voltar</a>
+
+        <c:if test="${not empty erro}">
+            <p style="color:red">${erro}</p>
+        </c:if>
     </div>
 </div>
 
