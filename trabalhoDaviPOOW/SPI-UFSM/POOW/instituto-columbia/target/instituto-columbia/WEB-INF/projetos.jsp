@@ -30,7 +30,7 @@
 
   <div class="container-projetos">
 
-    <!-- FEED -->
+
     <div class="projects-feed">
 
       <div class="feed-header">
@@ -116,7 +116,7 @@
 
     </div>
 
-    <!-- FORM -->
+
     <div class="project-form-wrapper">
 
       <div class="project-form-card">

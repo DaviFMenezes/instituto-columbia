@@ -1,5 +1,5 @@
 .footer {
-    background: #1e3a8a; /* azul institucional */
+    background: #1e3a8a;
     color: #ffffff;
     padding: 25px 20px;
     text-align: center;
@@ -11,7 +11,6 @@
     gap: 12px;
 }
 
-/* links e área legal */
 .footer .links,
 .footer .legal {
     display: flex;
@@ -20,7 +19,7 @@
     justify-content: center;
 }
 
-/* links */
+
 .footer a {
     color: #e5e7eb;
     text-decoration: none;
@@ -32,7 +31,6 @@
     color: #ffffff;
 }
 
-/* texto */
 .footer p {
     margin: 0;
     font-weight: 400;

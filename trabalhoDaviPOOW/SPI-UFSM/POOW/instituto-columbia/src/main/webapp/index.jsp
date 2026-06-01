@@ -67,8 +67,6 @@
 
         </form>
 
-        <!-- MENSAGENS -->
-
         <c:if test="${not empty sucesso}">
             <p style="color:green">
                     ${sucesso}

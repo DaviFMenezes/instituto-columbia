@@ -12,18 +12,18 @@
 }
 
 .logo {
-    width: 220px; /* Largura maior para acomodar a logo com texto lateral */
-    height: 90px;  /* Ocupa a altura total do header */
+    width: 220px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Corta o excesso invisível da imagem */
-    margin-left: -30px; /* Remove o recuo da borda transparente da imagem */
+    overflow: hidden;
+    margin-left: -30px;
 }
 
 .logo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transform: scale(2.2); /* Amplia o desenho tirando o espaço em branco */
+    transform: scale(2.2);
 }

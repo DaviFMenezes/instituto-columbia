@@ -80,7 +80,7 @@ public class UsuarioServlet extends HttpServlet {
 
             req.setAttribute("usuarioForm", usuarioEditar);
         } else {
-            req.setAttribute("usuarioForm", null); // força reset
+            req.setAttribute("usuarioForm", null);
         }
         if ("excluir".equals(acao)) {
             int id = Integer.parseInt(req.getParameter("id"));

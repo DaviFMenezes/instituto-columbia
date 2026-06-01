@@ -21,7 +21,7 @@ public class MensagemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        // Captura o ID para saber se é Edição ou Cadastro
+
         String idStr = req.getParameter("id");
         String nome = req.getParameter("nome");
         String email = req.getParameter("email");
@@ -35,7 +35,7 @@ public class MensagemServlet extends HttpServlet {
                 mensagemTexto == null || mensagemTexto.isEmpty()) {
 
             req.setAttribute("erro", "Preencha todos os campos obrigatórios");
-            // Encaminha de volta para o mensagens.jsp dentro de WEB-INF para não quebrar o fluxo da lista
+
             req.getRequestDispatcher("WEB-INF/mensagens.jsp").forward(req, resp);
             return;
         }
@@ -43,7 +43,7 @@ public class MensagemServlet extends HttpServlet {
         Mensagem m = new Mensagem(nome, email, assunto, mensagemTexto);
 
         try {
-            // Se o ID veio preenchido, significa que estamos EDITANDO
+
             if (idStr != null && !idStr.isEmpty()) {
                 m.setId(Integer.parseInt(idStr));
 
@@ -57,13 +57,13 @@ public class MensagemServlet extends HttpServlet {
                     req.getRequestDispatcher("WEB-INF/mensagens.jsp").forward(req, resp);
                 }
             }
-            // Se o ID está vazio, significa que é um novo CADASTRO
+
             else {
                 System.out.println("Tentando salvar nova mensagem...");
                 boolean inseriu = service.inserir(m);
 
                 if (inseriu) {
-                    // Se o cadastro foi feito pela área administrativa, redireciona para a lista
+
                     resp.sendRedirect(req.getContextPath() + "/mensagem?msg=salvo");
                 } else {
                     req.setAttribute("erro", "Não foi possível salvar a mensagem.");

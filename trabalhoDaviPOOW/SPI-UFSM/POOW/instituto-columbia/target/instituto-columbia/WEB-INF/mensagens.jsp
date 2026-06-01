@@ -11,7 +11,7 @@
 <div class="page-wrapper">
     <jsp:include page="/WEB-INF/includes/header.jsp" />
 
-    <%-- Mensagens de feedback baseadas no parâmetro da URL --%>
+
     <c:choose>
         <c:when test="${param.msg == 'salvo'}">
             <div class="msg">Mensagem cadastrada!</div>
@@ -25,7 +25,7 @@
     </c:choose>
 
     <div class="container" style="display: flex; gap: 20px;">
-        <!-- Lista de Mensagens -->
+
         <div class="card" style="flex: 2;">
             <h2>Lista de Mensagens</h2>
             <table>
@@ -55,12 +55,12 @@
             </table>
         </div>
 
-        <!-- Formulário Híbrido: Cadastrar / Editar -->
+
         <div class="card" style="flex: 1;">
             <h2>${mensagemEditar != null ? 'Editar Mensagem' : 'Cadastrar Mensagem'}</h2>
             <form action="${pageContext.request.contextPath}/mensagem" method="post">
 
-                <!-- ID oculto que define se é inserção ou atualização -->
+
                 <input type="hidden" name="id" value="${mensagemEditar != null ? mensagemEditar.id : ''}">
 
                 <label>Nome</label>
