@@ -4,28 +4,57 @@
 <html>
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footerPublica.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
   <title>Login</title>
 </head>
-<body>
-<jsp:include page="/WEB-INF/includes/header.jsp" />
-<div class="container">
-  <div class="box">
+<body class="login-body">
+
+<header class="login-header">
+
+  <a href="${pageContext.request.contextPath}/">
+
+    <img
+            src="${pageContext.request.contextPath}/images/columbia-logo.png"
+            alt="Logo Instituto Columbia">
+
+  </a>
+
+</header>
+
+<main class="login-container">
+
+  <div class="login-box">
+
     <h2>Login</h2>
+
     <form action="login" method="post">
-      <input class="form-control" type="email"  name="email" placeholder="E-mail" required>
-      <input class="form-control" type="password" name="senha" placeholder="Senha" required>
-      <button type="submit">Entrar</button>
+
+      <input
+              class="form-control"
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              required>
+
+      <input
+              class="form-control"
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              required>
+
+      <button type="submit">
+        Entrar
+      </button>
+
     </form>
 
-    <c:if test="${not empty erro}">
-      <p style="color:red">${erro}</p>
-    </c:if>
-  </div>
-</div>
+    <a class="voltar" href="${pageContext.request.contextPath}/">Voltar ao site</a>
 
-<jsp:include page="/WEB-INF/includes/footer.jsp" />
+  </div>
+
+</main>
 
 </body>
 </html>

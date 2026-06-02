@@ -5,12 +5,12 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="<c:url value='/css/usuarios.css?v=2'/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/css/footer.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/footerAdmin.css'/>">
 </head>
 
 <body>
 <div class="page-wrapper">
-    <jsp:include page="/WEB-INF/includes/header.jsp" />
+    <jsp:include page="/WEB-INF/includes/headerAdmin.jsp" />
     <c:choose>
         <c:when test="${param.msg == 'salvo'}">
             <div class="msg">Usuário cadastrado!</div>
@@ -87,7 +87,7 @@
         </div>
     </c:if>
 
-    <jsp:include page="/WEB-INF/includes/footer.jsp" />
+    <jsp:include page="/WEB-INF/includes/footerAdmin.jsp" />
 </div>
 </body>
 </html>

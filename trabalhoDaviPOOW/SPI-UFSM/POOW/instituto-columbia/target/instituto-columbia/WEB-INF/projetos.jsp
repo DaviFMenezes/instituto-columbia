@@ -6,14 +6,14 @@
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<c:url value='/css/projetos.css?v=3'/>">
-  <link rel="stylesheet" type="text/css" href="<c:url value='/css/footer.css'/>">
+  <link rel="stylesheet" type="text/css" href="<c:url value='/css/footerAdmin.css'/>">
 </head>
 
 <body>
 
 <div class="page-wrapper">
 
-  <jsp:include page="/WEB-INF/includes/header.jsp" />
+  <jsp:include page="/WEB-INF/includes/headerAdmin.jsp" />
 
   <c:choose>
     <c:when test="${param.msg == 'salvo'}">
@@ -177,7 +177,7 @@
 
   </c:if>
 
-  <jsp:include page="/WEB-INF/includes/footer.jsp" />
+  <jsp:include page="/WEB-INF/includes/footerAdmin.jsp" />
 
 </div>
 
