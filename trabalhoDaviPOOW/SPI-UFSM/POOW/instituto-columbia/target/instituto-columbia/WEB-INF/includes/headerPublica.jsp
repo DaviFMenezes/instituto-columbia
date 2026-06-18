@@ -40,7 +40,7 @@
                 <ul class="navbar-nav mx-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.jsp">
                             Início
                         </a>
                     </li>
@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="projetosPublica.jsp">
                             Projetos
                         </a>
                     </li>

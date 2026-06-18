@@ -25,9 +25,9 @@
 
 .logo-admin{
 
-    width: 220px;
+    width: 140px;
 
-    height: 90px;
+    height: auto;
 
     display: flex;
 
@@ -43,8 +43,6 @@
     height: 100%;
 
     object-fit: contain;
-
-    transform: scale(2);
 }
 
 /* USUÁRIO */
