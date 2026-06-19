@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 
 <html>
 <head>
+  <meta charset="UTF-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="<c:url value='/css/projetos.css?v=3'/>">
+  <link rel="stylesheet" type="text/css" href="<c:url value='/css/projetos.css?v=5'/>">
   <link rel="stylesheet" type="text/css" href="<c:url value='/css/footerAdmin.css'/>">
 </head>
 
@@ -21,7 +22,7 @@
     </c:when>
 
     <c:when test="${param.msg == 'excluido'}">
-      <div class="msg">Projeto excluído!</div>
+      <div class="msg">Projeto excluido!</div>
     </c:when>
 
     <c:when test="${param.msg == 'editado'}">
@@ -30,7 +31,6 @@
   </c:choose>
 
   <div class="container-projetos">
-
 
     <div class="projects-feed">
 
@@ -46,51 +46,49 @@
           <div class="project-top">
 
             <div>
-                            <span class="project-number">
-                              #${status.index + 1}
-                            </span>
-
+              <span class="project-number">#${status.index + 1}</span>
               <h2>${p.titulo}</h2>
             </div>
 
-            <span class="project-category">
-                ${p.categoria}
-            </span>
+            <span class="project-category">${p.categoria}</span>
 
           </div>
 
           <div class="project-description">
-              ${p.descricao}
+            ${p.descricao}
           </div>
 
           <div class="project-info">
 
             <div class="info-item">
               <strong>ID:</strong>
-                ${p.id}
+              ${p.id}
             </div>
 
             <div class="info-item">
               <strong>Criador:</strong>
-                ${p.id_usuario}
+              ${p.id_usuario}
             </div>
 
             <div class="info-item">
-              <strong>Início:</strong>
-                ${p.dataInicio}
+              <strong>Inicio:</strong>
+              ${p.dataInicio}
             </div>
 
             <div class="info-item">
-              <strong>Término:</strong>
-                ${p.dataTermino}
+              <strong>Termino:</strong>
+              ${p.dataTermino}
             </div>
 
           </div>
 
-          <div class="project-image">
-            <strong>Imagem:</strong>
-              ${p.imagemUrl}
-          </div>
+          <c:if test="${not empty p.imagemUrl}">
+            <div class="project-image">
+              <c:url var="imagemProjetoAdmin" value="${p.imagemUrl}" />
+              <img src="${imagemProjetoAdmin}" alt="Imagem do projeto ${p.titulo}">
+              <span>${p.imagemUrl}</span>
+            </div>
+          </c:if>
 
           <c:if test="${sessionScope.usuario.id == p.id_usuario || sessionScope.usuario.permissao == 'ADMIN'}">
 
@@ -112,7 +110,6 @@
 
     </div>
 
-
     <div class="project-form-wrapper">
 
       <div class="project-form-card">
@@ -121,17 +118,17 @@
           ${projeto.id != null ? 'Editar Projeto' : 'Novo Projeto'}
         </h2>
 
-        <form action="projeto" method="post">
+        <form action="projeto" method="post" enctype="multipart/form-data">
 
           <input type="hidden" class="form-control" name="id" value="${projeto.id}">
-          <label>Título</label>
 
+          <label>Titulo</label>
           <input type="text" class="form-control" name="titulo" value="${projeto.titulo}">
-          <label>Descrição</label>
 
+          <label>Descricao</label>
           <textarea class="form-control" name="descricao" rows="6">${projeto.descricao}</textarea>
-          <label>Categoria</label>
 
+          <label>Categoria</label>
           <select class="form-control" name="categoria">
             <option value="Cultura"${projeto != null && projeto.categoria == 'Cultura' ? 'selected' : ''}>
               Cultura
@@ -140,16 +137,24 @@
             <option value="Esporte"${projeto != null && projeto.categoria == 'Esporte' ? 'selected' : ''}>
               Esporte
             </option>
-
           </select>
-          <label>Imagem URL</label>
 
-          <input type="text" class="form-control" name="imagemUrl" value="${projeto.imagemUrl}">
-          <label>Data de Início</label>
+          <label>Imagem do projeto</label>
+          <input type="hidden" name="imagemAtual" value="${projeto.imagemUrl}">
+          <input type="file" class="form-control" name="imagemArquivo" accept="image/*">
 
+          <c:if test="${not empty projeto.imagemUrl}">
+            <div class="current-image">
+              <c:url var="imagemAtualPreview" value="${projeto.imagemUrl}" />
+              <img src="${imagemAtualPreview}" alt="Imagem atual do projeto">
+              <span>Imagem atual: ${projeto.imagemUrl}</span>
+            </div>
+          </c:if>
+
+          <label>Data de Inicio</label>
           <input type="date" class="form-control" name="dataInicio" value="${projeto.dataInicio}">
-          <label>Data de Término</label>
 
+          <label>Data de Termino</label>
           <input type="date" class="form-control" name="dataTermino" value="${projeto.dataTermino}">
 
           <button type="submit">

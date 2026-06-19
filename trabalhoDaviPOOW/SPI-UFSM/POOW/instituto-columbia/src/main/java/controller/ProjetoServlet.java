@@ -2,17 +2,26 @@ package controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.Projeto;
 import model.Usuario;
 import service.ProjetoService;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet("/projeto")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 5 * 1024 * 1024,
+        maxRequestSize = 10 * 1024 * 1024
+)
 public class ProjetoServlet extends HttpServlet {
 
     private ProjetoService service = new ProjetoService();
@@ -24,6 +33,42 @@ public class ProjetoServlet extends HttpServlet {
         boolean ehAdmin = "ADMIN".equals(usuario.getPermissao());
 
         return ehDono || ehAdmin;
+    }
+
+    private String salvarImagem(HttpServletRequest req) throws IOException, ServletException {
+        Part arquivo = req.getPart("imagemArquivo");
+
+        if (arquivo == null || arquivo.getSize() == 0) {
+            return null;
+        }
+
+        String contentType = arquivo.getContentType();
+        if (contentType == null || !contentType.startsWith("image/")) {
+            throw new ServletException("O arquivo enviado precisa ser uma imagem.");
+        }
+
+        String nomeOriginal = Paths.get(arquivo.getSubmittedFileName()).getFileName().toString();
+        String extensao = "";
+        int ponto = nomeOriginal.lastIndexOf('.');
+        if (ponto >= 0) {
+            extensao = nomeOriginal.substring(ponto).toLowerCase();
+        }
+
+        String nomeArquivo = UUID.randomUUID() + extensao;
+        String pastaRelativa = "/images/projetos";
+        String pastaDestino = getServletContext().getRealPath(pastaRelativa);
+
+        if (pastaDestino == null) {
+            throw new ServletException("Nao foi possivel localizar a pasta de imagens do servidor.");
+        }
+
+        File diretorio = new File(pastaDestino);
+        if (!diretorio.exists() && !diretorio.mkdirs()) {
+            throw new ServletException("Nao foi possivel criar a pasta de imagens dos projetos.");
+        }
+
+        arquivo.write(new File(diretorio, nomeArquivo).getAbsolutePath());
+        return pastaRelativa + "/" + nomeArquivo;
     }
 
     @Override
@@ -86,7 +131,12 @@ public class ProjetoServlet extends HttpServlet {
         String titulo = req.getParameter("titulo");
         String descricao = req.getParameter("descricao");
         String categoria = req.getParameter("categoria");
-        String imagemUrl = req.getParameter("imagemUrl");
+        String imagemUrl = req.getParameter("imagemAtual");
+        String novaImagemUrl = salvarImagem(req);
+
+        if (novaImagemUrl != null) {
+            imagemUrl = novaImagemUrl;
+        }
 
         LocalDate dataInicio = LocalDate.parse(req.getParameter("dataInicio"));
         LocalDate dataTermino = null;
@@ -108,6 +158,7 @@ public class ProjetoServlet extends HttpServlet {
                 return;
             }
             p.setId(idProjeto);
+            p.setId_usuario(projetoOriginal.getId_usuario());
             service.atualizar(p);
             resp.sendRedirect("projeto?msg=editado");
         } else {

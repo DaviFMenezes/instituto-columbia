@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="projetosPublica.jsp">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/projetosPublica.jsp">
                             Projetos
                         </a>
                     </li>
