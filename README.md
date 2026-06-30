@@ -1,6 +1,6 @@
 # Descrição do Trabalho
 
-O sistema foi desenvolvido para o gerenciamento institucional de projetos voltados à criação e administração de projetos de lei de incentivo cultural, esportivo e social.
+O sistema foi desenvolvido para o gerenciamento institucional de projetos voltados à criação e administração de projetos de lei de incentivo cultural e esportivo.
 
 A aplicação permite o gerenciamento de:
 
